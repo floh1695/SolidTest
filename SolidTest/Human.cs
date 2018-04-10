@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace SolidTest
 {
-    class Human : Entity, ISleep, IRest, ISayHello, IEat
+    class Human : Animal
     {
-        public void WakeUp() { this.IsAsleep = false; }
-        public void FallAsleep() { this.IsAsleep = true; }
-        public void Rest() { this.FallAsleep(); }
-        public void UnRest() { this.WakeUp(); }
+        public override void Eat(string food) { Console.WriteLine($"I'm eating some {food}"); }
 
-        public void Eat(string food) { Console.WriteLine($"I'm eating some {food}"); }
-
-        public void SayHello() { Console.WriteLine($"Hello, I am {this.Name}"); }
+        public override void SayHello() { Console.WriteLine($"Hello, I am {this.Name}"); }
 
         public List<IPet> Pets = new List<IPet>();
-        public void Adopt(IPet pet) { }
+        public void Adopt(IPet pet) {
+            pet.OwnersName = this.Name;
+            this.Pets.Add(pet);
+        }
 
         public override string ToString()
         {

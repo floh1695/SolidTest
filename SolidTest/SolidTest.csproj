@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animal.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="IEat.cs" />
     <Compile Include="IPet.cs" />
+    <Compile Include="IRest.cs" />
     <Compile Include="ISayHello.cs" />
     <Compile Include="ISleep.cs" />
     <Compile Include="Panda.cs" />

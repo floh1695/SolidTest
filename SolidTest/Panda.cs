@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace SolidTest
 {
-    class Panda : Entity, ISleep, IRest, IPet, ISayHello, IEat
+    class Panda : Animal, IPet
     {
         public string OwnersName { get; set; }
 
-        public void WakeUp() { this.IsAsleep = false; }
-        public void FallAsleep() { this.IsAsleep = true; }
-        public void Rest() { this.FallAsleep(); }
-        public void UnRest() { this.WakeUp(); }
+        public override void Eat(string food) { Console.WriteLine($"The beast chows down on some {food}"); }
 
-        public void Eat(string food) { Console.WriteLine($"The beast chows down on some {food}"); }
-
-        public void SayHello() { Console.WriteLine($"{this.Name} waves at you"); }
+        public override void SayHello() { Console.WriteLine($"{this.Name} waves at you"); }
 
         public override string ToString()
         {

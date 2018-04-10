@@ -6,18 +6,24 @@ using System.Threading.Tasks;
 
 namespace SolidTest
 {
-    class Robot : Entity, IRest, IPet, ISayHello
+    class Robot : Entity, IPet
     {
         public string VersionNumber { get; set; } = "";
 
         public string OwnersName { get; set; } = "";
 
-        public void StartUp() { this.IsAsleep = false; }
-        public void ShutDown() { this.IsAsleep = true; }
-        public void Rest() { this.ShutDown(); }
-        public void UnRest() { this.StartUp(); }
+        public void StartUp()
+        {
+            Console.WriteLine($"{this.Name} boots up");
+            this.UnRest();
+        }
+        public void ShutDown()
+        {
+            Console.WriteLine($"{this.Name} boots down");
+            this.Rest();
+        }
 
-        public void SayHello() { Console.WriteLine($"Hello human, I am called {this.Name}"); }
+        public override void SayHello() { Console.WriteLine($"Hello human, I am called {this.Name}"); }
 
         public override string ToString()
         {
